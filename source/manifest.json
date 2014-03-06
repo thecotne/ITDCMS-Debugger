@@ -1,0 +1,37 @@
+{
+	"name": "ITDCMS Debugger",
+	"short_name": "ITDCMS_Debugger",
+	"description": "ITDCMS Debugger is chrome extension for easy Debugging of ITDCMS",
+	"version": "0.1.0",
+	"update_url": "https://raw.github.com/thecotne/ITDCMS_Debugger/master/update.xml",
+	"icons": {
+		"16": "icon16.png",
+		"48": "icon48.png",
+		"128": "icon128.png"
+	},
+	"devtools_page": "devback.html",
+	"manifest_version": 2,
+	"background": {
+		"page": "background.html"
+	},
+	"content_scripts": [{
+		"all_frames": true,
+		"matches": ["http://*/*/itdc/system/debugInfo/*", "https://*/*/itdc/system/debugInfo/*","http://*/*/itdc/system/debugInfo", "https://*/*/itdc/system/debugInfo"],
+		"js": ["contentscript.js"]
+	}],
+	"content_security_policy": "default-src 'self'  chrome-extension-resource: ; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval';  connect-src *; frame-src *;",
+	"web_accessible_resources": [
+		"*"
+	],
+	"permissions": [ "storage", "tabs", "debugger", "http://*/*", "https://*/*", "contextMenus"],
+	"plugins": [{
+		"path": "npsimpleGetPlugin.dll",
+		"public": false
+	}, {
+		"path": "libsimpleGetPlugin.so",
+		"public": false
+	}, {
+		"path": "libsimpleGetPlugin64.so",
+		"public": false
+	}]
+}
