@@ -1,30 +1,43 @@
 var iframe,
-	root;
-
-chrome.devtools.inspectedWindow.eval("location", function(location){
-	root = location.protocol + '//' + location.host;
-	makeIframe(root+'/itdc/system/debugInfo/0')
-	i = 0;
-});
-
-chrome.devtools.network.onRequestFinished.addListener(function(request) {
-	for(k in request.request.headers) {
-		if(request.request.headers[k]['name'] == 'X-Requested-With' && request.request.headers[k]['value'] == 'XMLHttpRequest') {
-			makeIframe(root+'/itdc/system/debugInfo/0');
-		}
-	}
-});
-
-chrome.devtools.network.onNavigated.addListener(function(url) {
-	makeIframe(root+'/itdc/system/debugInfo/0');
-});
-
-function makeIframe(url){
+	root,
+	debug_url,
+	theme;
+function makeIframe(){
 	if (!iframe) {
 		iframe = document.createElement('iframe');
 		iframe.setAttribute('width','100%');
 		iframe.setAttribute('height','100%');
 		document.body.appendChild(iframe);
 	}
-	iframe.setAttribute('src',url);
+	iframe.setAttribute('src',debug_url);
 }
+function _settings_update(_theme){
+	if (theme != _theme) {
+		theme = _theme;
+		debug_url = root + '/itdc/system/debug/' + theme + '/';
+		makeIframe();
+	};
+}
+chrome.devtools.inspectedWindow.eval("location.protocol + '//' + location.host", function(_root){
+	root = _root;
+	settings.get(function(_settings){
+		_settings_update(_settings.themes[_settings.theme]);
+		settings.onchange(function(_settings){
+			_settings_update(_settings.themes[_settings.theme]);
+		});
+		
+		makeIframe();
+
+		chrome.devtools.network.onRequestFinished.addListener(function(request) {
+			for(k in request.request.headers) {
+				if(request.request.headers[k]['name'] == 'X-Requested-With' && request.request.headers[k]['value'] == 'XMLHttpRequest') {
+					makeIframe();
+				}
+			}
+		});
+		chrome.devtools.network.onNavigated.addListener(function(url) {
+			makeIframe();
+		});
+	});
+});
+

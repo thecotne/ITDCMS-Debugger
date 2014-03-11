@@ -3,7 +3,9 @@ var settings = {
 	_default: {
 		editor: 'C:\\Program Files\\Sublime Text 3\\sublime_text.exe',
 		dirpath: '\\\\192.168.1.33\\local\\',
-		domains: ['itdc.ge']
+		domains: ['itdc.ge'],
+		theme: 0,
+		themes: ['dark','light']
 	},
 	get: function(callback) {
 		chrome.storage.local.get('all', function(result) {
@@ -15,6 +17,11 @@ var settings = {
 			};
 			callback(_settings);
 		});
+	},
+	onchange: function(callback){
+		chrome.storage.onChanged.addListener(function(callback){ return function(changes, namespace) {
+			settings.get(callback);
+		}}(callback));
 	},
 	set: function(_settings) {
 		chrome.storage.local.set({

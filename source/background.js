@@ -26,7 +26,32 @@ chrome.contextMenus.create({
 		};
 	}
 });
-
+chrome.contextMenus.create({
+	title:'theme',
+	id:'ITDCMS_theme'
+});
+settings.get(function(_settings) {
+	for (var i = 0; i < settings._default.themes.length; i++) {
+		chrome.contextMenus.create({
+			title: settings._default.themes[i],
+			type: 'radio',
+			id:'ITDCMS_theme_'+settings._default.themes[i],
+			parentId: 'ITDCMS_theme',
+			checked: Boolean( i == _settings.theme ),
+			onclick: (function(_theme) {
+				return function() {
+					settings.get(function(_settings) {
+						debugger;
+						if (_settings.theme != _theme) {
+							_settings.theme = _theme;
+							settings.set(_settings);
+						};
+					});
+				}
+			})(i)
+		});
+	};
+});
 /* დაკომენტარებულია დომეინის მიხედვით Enable/Disable ფუნქცია
 	chrome.contextMenus.create({
 		type: 'separator',
