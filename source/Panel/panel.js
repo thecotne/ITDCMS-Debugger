@@ -14,7 +14,7 @@ function makeIframe(){
 function _settings_update(_theme){
 	if (theme != _theme) {
 		theme = _theme;
-		debug_url = root + '/itdc/debug/' + theme + '/';
+		debug_url = root + '/itdc/debug/index/' + theme + '/';
 		makeIframe();
 	};
 }
