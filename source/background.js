@@ -120,8 +120,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 			var plugin = document.getElementById('simpleGetPluginId');
 			simpleGetLibrary = plugin.SimpleGetPlugin();
 		}
-		// leave replace('/home/development', ''). for backward compatibility
-		var filePath = request.filePath.replace('/home/development', '').replace(/\//g, '\\');
+
+		var filePath = request.filePath.replace(/\//g, '\\');
 
 		settings.get(function(_settings) {
 			if ( endsWith(_settings.editor,'sublime_text.exe') ) {
