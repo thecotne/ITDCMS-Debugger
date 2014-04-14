@@ -2,7 +2,7 @@
 	"name": "ITDCMS Debugger",
 	"short_name": "ITDCMS_Debugger",
 	"description": "ITDCMS Debugger is chrome extension for easy Debugging of ITDCMS",
-	"version": "0.1.1",
+	"version": "0.2.0",
 	"update_url": "https://raw.github.com/thecotne/ITDCMS_Debugger/master/update.xml",
 	"icons": {
 		"16": "icon16.png",
