@@ -41,7 +41,6 @@ settings.get(function(_settings) {
 			onclick: (function(_theme) {
 				return function() {
 					settings.get(function(_settings) {
-						debugger;
 						if (_settings.theme != _theme) {
 							_settings.theme = _theme;
 							settings.set(_settings);
