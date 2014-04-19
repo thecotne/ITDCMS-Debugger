@@ -20,23 +20,22 @@ function _settings_update(_theme){
 }
 chrome.devtools.inspectedWindow.eval("location.protocol + '//' + location.host", function(_root){
 	root = _root;
+	_settings_update('light');
+	makeIframe();
+	chrome.devtools.network.onRequestFinished.addListener(function(request) {
+		for(k in request.request.headers) {
+			if(request.request.headers[k]['name'] == 'X-Requested-With' && request.request.headers[k]['value'] == 'XMLHttpRequest') {
+				makeIframe();
+			}
+		}
+	});
+	chrome.devtools.network.onNavigated.addListener(function(url) {
+		makeIframe();
+	});
 	settings.get(function(_settings){
 		_settings_update(_settings.themes[_settings.theme]);
 		settings.onchange(function(_settings){
 			_settings_update(_settings.themes[_settings.theme]);
-		});
-		
-		makeIframe();
-
-		chrome.devtools.network.onRequestFinished.addListener(function(request) {
-			for(k in request.request.headers) {
-				if(request.request.headers[k]['name'] == 'X-Requested-With' && request.request.headers[k]['value'] == 'XMLHttpRequest') {
-					makeIframe();
-				}
-			}
-		});
-		chrome.devtools.network.onNavigated.addListener(function(url) {
-			makeIframe();
 		});
 	});
 });
