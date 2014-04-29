@@ -10,4 +10,4 @@ ITDCMS Debugger is chrome extension for easy Debugging of ITDCMS
 4. drag and drop extension (crx file) on the page
 5. on "Confirm New Extension" window click "Add"
 
-[1]:https://raw.github.com/thecotne/ITDCMS_Debugger/master/builds/ITDCMS_DEBUGGER.0.2.2.crx
+[1]:https://raw.github.com/thecotne/ITDCMS_Debugger/master/builds/ITDCMS_DEBUGGER.0.2.3.crx
