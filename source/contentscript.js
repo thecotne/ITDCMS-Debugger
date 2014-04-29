@@ -1,4 +1,4 @@
-var meta_remove_path = document.querySelector('meta[name="itdcms:remove_path"]');
+var meta_remove_path = document.querySelector('meta[name="itdcms:root_path"]');
 if (meta_remove_path && meta_remove_path.content) {
 	var remove_path = meta_remove_path.content;
 }else{
