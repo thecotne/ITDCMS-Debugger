@@ -1,11 +1,7 @@
 // პარამეტრების მართვის სისტემა
 var settings = {
 	_default: {
-		editor: 'C:\\Program Files\\Sublime Text 3\\sublime_text.exe',
 		dirpath: '\\\\192.168.1.33\\local\\',
-		domains: ['itdc.ge'],
-		theme: 0,
-		themes: ['dark','light']
 	},
 	get: function(callback) {
 		chrome.storage.local.get('all', function(result) {
@@ -29,9 +25,6 @@ var settings = {
 		});
 	},
 	contextMenus: [{
-		key: 'editor',
-		label: 'text editor'
-	}, {
 		key: 'dirpath',
 		label: 'files directory'
 	}]

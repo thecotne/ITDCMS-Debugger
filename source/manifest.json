@@ -2,8 +2,7 @@
 	"name": "ITDCMS Debugger",
 	"short_name": "ITDCMS_Debugger",
 	"description": "ITDCMS Debugger is chrome extension for easy Debugging of ITDCMS",
-	"version": "0.2.3",
-	"update_url": "https://raw.github.com/thecotne/ITDCMS_Debugger/master/update.xml",
+	"version": "0.3.0",
 	"icons": {
 		"128": "icons/icon128.png",
 		"16": "icons/icon16.png",
@@ -23,15 +22,5 @@
 	"web_accessible_resources": [
 		"*"
 	],
-	"permissions": ["storage", "tabs", "debugger", "http://*/*", "https://*/*", "contextMenus"],
-	"plugins": [{
-		"path": "npsimpleGetPlugin.dll",
-		"public": false
-	}, {
-		"path": "libsimpleGetPlugin.so",
-		"public": false
-	}, {
-		"path": "libsimpleGetPlugin64.so",
-		"public": false
-	}]
+	"permissions": ["storage", "tabs", "debugger", "http://*/*", "https://*/*", "contextMenus"]
 }
