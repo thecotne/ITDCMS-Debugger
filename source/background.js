@@ -34,7 +34,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	if (request.command == 'open') {
 		var filePath = request.filePath;
 		settings.get(function(_settings) {
-			subl.src = 'subl://' + _settings.dirpath + filePath;
+			subl.src = ('subl://' + _settings.dirpath + filePath).replace(/\\/g,'/');
 		});
 	}
 
