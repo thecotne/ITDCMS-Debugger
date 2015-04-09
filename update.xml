@@ -1,5 +1,0 @@
-<gupdate xmlns="http://www.google.com/update2/response" protocol="2.0"> 
-	<app appid="cdpemojmmjjoclbnlbbpojkdodjhdlco"> 
-		<updatecheck codebase="https://raw.github.com/thecotne/ITDCMS_Debugger/master/builds/ITDCMS_DEBUGGER.0.2.3.crx" version="0.2.3"/>
-	</app> 
-</gupdate>
