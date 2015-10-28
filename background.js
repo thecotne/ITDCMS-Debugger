@@ -39,3 +39,31 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	}
 
 });
+
+// check mark status on page and show/hide button
+function showButton(tabID, info, tab){
+    // check mark status
+    chrome.tabs.sendRequest(tab.id, {method: 'markExists'}, function(response) {
+        if (response && response.method == 'markExists') {
+            icoshow = response.data;
+            if (icoshow) {
+                chrome.pageAction.show(tabID);
+            } else {
+                chrome.pageAction.hide(tabID);
+            }
+        }
+    });
+}
+
+// set listener
+chrome.tabs.onUpdated.addListener(showButton);
+
+// button click event
+chrome.pageAction.onClicked.addListener(function(tab){
+    var domain = tab.url.match(/^[\w-]+:\/*\[?([\w\.:-]+)\]?(?::\d+)?/)[0];
+    if (domain) {
+        chrome.tabs.create({'url': domain+'/itdc/debug'}, function(tab) {
+            // Tab opened
+        });
+    }
+});

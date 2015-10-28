@@ -15,10 +15,19 @@ if (open_file.length) {
 					filePath = filePath.replace(remove_path,'');
 				};
 				chrome.runtime.sendMessage({
-					command: "open",
+					command: 'open',
 					filePath: filePath
 				}/* [response] */);
 			};
 		});
 	};
 };
+
+// check mark status on page
+chrome.extension.onRequest.addListener(
+    function(request, sender, sendResponse) {
+        if (request.method == 'markExists') {
+            sendResponse({data: meta_remove_path, method: 'markExists'});
+        }
+    }
+);
