@@ -25,9 +25,9 @@ if (open_file.length) {
 
 // check mark status on page
 chrome.extension.onRequest.addListener(
-    function(request, sender, sendResponse) {
-        if (request.method == 'markExists') {
-            sendResponse({data: meta_remove_path, method: 'markExists'});
-        }
-    }
+	function(request, sender, sendResponse) {
+		if (request.method == 'markExists') {
+			sendResponse({data: meta_remove_path, method: 'markExists'});
+		}
+	}
 );

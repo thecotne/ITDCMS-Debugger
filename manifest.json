@@ -8,10 +8,10 @@
 		"16": "icons/icon16.png",
 		"48": "icons/icon48.png"
 	},
-    "page_action": {
-        "default_icon": "icons/icon128.png",
-        "default_title": "Open Debugger in new Tab"
-    },
+	"page_action": {
+		"default_icon": "icons/icon128.png",
+		"default_title": "Open Debugger in new Tab"
+	},
 	"devtools_page": "devback.html",
 	"manifest_version": 2,
 	"background": {
