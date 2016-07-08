@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "zip": "zip -r itdcms_debugger.zip . -x node_modules/\\* .\\*",
+    "upload": "chrome-webstore-manager update nlnncapllcododheidankmkbidbefdkb itdcms_debugger.zip",
+    "publish": "chrome-webstore-manager publish nlnncapllcododheidankmkbidbefdkb",
+    "remove-zip": "rm itdcms_debugger.zip",
+    "update": "npm run zip;npm run upload;npm run publish;npm run remove-zip"
+  },
+  "private": true,
+  "devDependencies": {
+    "chrome-webstore-manager": "^0.4.0"
+  }
+}
