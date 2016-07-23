@@ -16,93 +16,93 @@ COLOR_RESET=`tput sgr0`
 EXTENSIONID="nlnncapllcododheidankmkbidbefdkb"
 
 function createZip { # Create extension zip file
-    zip -r extension.zip . -x node_modules/\* .\*
+  zip -r extension.zip . -x node_modules/\* .\*
 }
 
 function upload { # Upload extension zip to chrome web store
-    chrome-webstore-manager update "$EXTENSIONID" extension.zip
+  chrome-webstore-manager update "$EXTENSIONID" extension.zip
 }
 
 function publish { # Publish last uploaded version
-    chrome-webstore-manager publish "$EXTENSIONID"
+  chrome-webstore-manager publish "$EXTENSIONID"
 }
 
 function update { # Update extension
-    createZip
-    refresh-token
-    upload
-    publish
-    clear
+  createZip
+  refresh-token
+  upload
+  publish
+  clear
 }
 
 function refresh-token { # Get access token using refresh token
-    export WEBSTORE_TOKEN=$(chrome-webstore-manager refresh_token --client_id "$webstoreClientId" --client_secret "$webstoreClientSecret")
+  export WEBSTORE_TOKEN=$(chrome-webstore-manager refresh_token --client_id "$webstoreClientId" --client_secret "$webstoreClientSecret")
 }
 
 function clear { # Clear artifacts
-    rm extension.zip
+  rm extension.zip
 }
 
 function _longestLineLength { # Display longest line length
-    echo "$1" | awk ' { if ( length > L ) { L=length ;s=$0 } }END{ print L }'
+  echo "$1" | awk ' { if ( length > L ) { L=length ;s=$0 } }END{ print L }'
 }
 
 function _logo { # Display LOGO if there is enough space in terminal window
-    if [[  "$(tput cols)" -ge "$(_longestLineLength "${LOGO}")" ]]; then
-        echo "${LOGO}"
-    fi
+  if [[  "$(tput cols)" -ge "$(_longestLineLength "${LOGO}")" ]]; then
+    echo "${LOGO}"
+  fi
 }
 
 function _listPublicFunctions { # Display list of public functions definded in current file
-    _listFunctions "/^function ([a-zA-Z][a-zA-Z0-9\_]+)\ \{ \# (.+)/"
+  _listFunctions "/^function ([a-zA-Z][a-zA-Z0-9\_]+)\ \{ \# (.+)/"
 }
 
 function _listAllFunctions { # Display list of all functions definded in current file
-    _listFunctions "/^function ([a-zA-Z0-9\_]+)\ \{ \# (.+)/"
+  _listFunctions "/^function ([a-zA-Z0-9\_]+)\ \{ \# (.+)/"
 }
 
 function _listPrivateFunctions { # Display list of private functions definded in current file
-    _listFunctions "/^function (_[a-zA-Z0-9\_]+)\ \{ \# (.+)/"
+  _listFunctions "/^function (_[a-zA-Z0-9\_]+)\ \{ \# (.+)/"
 }
 
 function _listFunctions { # Display list of functions definded in current file
-    regex="/^function ([a-zA-Z][a-zA-Z0-9\_]+)\ \{ \# (.+)/"
-    length="$(_longestLineLength "$(cat $0 | gawk "match(\$0, $1, a) {print a[1]}")")"
+  regex="/^function ([a-zA-Z][a-zA-Z0-9\_]+)\ \{ \# (.+)/"
+  length="$(_longestLineLength "$(cat $0 | gawk "match(\$0, $1, a) {print a[1]}")")"
 
-    cat $0 \
-        | gawk "match(\$0, $1, a) {printf(\"%s\t%s\n\", \"\033[34;1m  \" a[1] \"\033[0m\", a[2])}" \
-        | expand -t $((length + 18))
+  cat $0 \
+    | gawk "match(\$0, $1, a) {printf(\"%s\t%s\n\", \"\033[34;1m  \" a[1] \"\033[0m\", a[2])}" \
+    | expand -t $((length + 18))
 }
 function _error { # Display error message
-    if [ -n "$(type -t cowsay)"  ]; then
-        cowsay "$1"
-        echo ""
-    else
-        echo ""
-        echo "${COLOR_RED}$1${COLOR_RESET}"
-        echo ""
-    fi
+  if [ -n "$(type -t cowsay)"  ]; then
+    cowsay "$1"
+    echo ""
+  else
+    echo ""
+    echo "${COLOR_RED}$1${COLOR_RESET}"
+    echo ""
+  fi
 }
 
 function _help { # Display help message
-    _logo
-    echo ""
-    echo "${COLOR_GREEN}Tasker ${COLOR_RESET}version ${COLOR_BROWN}${VERSION}${COLOR_RESET} - Bash alias runner"
-    echo ""
-    echo "${COLOR_BROWN}Usage:${COLOR_RESET}"
-    echo "  $0 command [arguments]"
-    echo ""
-    echo "${COLOR_BROWN}Available commands:${COLOR_RESET}"
-    _listPublicFunctions
-    echo ""
+  _logo
+  echo ""
+  echo "${COLOR_GREEN}Tasker ${COLOR_RESET}version ${COLOR_BROWN}${VERSION}${COLOR_RESET} - Bash alias runner"
+  echo ""
+  echo "${COLOR_BROWN}Usage:${COLOR_RESET}"
+  echo "  $0 command [arguments]"
+  echo ""
+  echo "${COLOR_BROWN}Available commands:${COLOR_RESET}"
+  _listPublicFunctions
+  echo ""
 }
 
 if [[ $1 ]]; then
-    if [ -n "$(type -t $1)"  ]; then
-        eval "${@:1}"
-    else
-        _error "Command \"$1\" is not defined."
-    fi
+  if [ -n "$(type -t $1)"  ]; then
+    eval "${@:1}"
+  else
+    _error "Command \"$1\" is not defined."
+  fi
 else
-    _help
+  _help
 fi
