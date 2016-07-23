@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 # Cotne Nazarashvili aka THECOTNE <cotne.95@gmail.com>
+
+if [ ! -f tasker-core/tasker-core ]; then
+  echo "load submodules"
+  git submodule init
+  git submodule update
+fi
+
 source tasker-core/tasker-core
 EXTENSIONID="nlnncapllcododheidankmkbidbefdkb"
 
