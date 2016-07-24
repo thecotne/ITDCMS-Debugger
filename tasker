@@ -3,8 +3,7 @@
 
 if [ ! -f tasker-core/tasker-core ]; then
   echo "load submodules"
-  git submodule init
-  git submodule update
+  git submodule update --init --recursive
 fi
 
 source tasker-core/tasker-core
