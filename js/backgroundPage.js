@@ -1,3 +1,7 @@
+/* global chrome, settings */
+/* eslint no-alert: 0 */
+/* eslint no-underscore-dangle: 0 */
+
 for (const key in settings.contextMenus) {
   chrome.contextMenus.create({
     title: `Change ${settings.contextMenus[key].label}`,
@@ -7,7 +11,7 @@ for (const key in settings.contextMenus) {
         const def = all[settings.contextMenus[key].key];
         const val = prompt(`Change ${settings.contextMenus[key].label}`, def) || def;
 
-        if (val != def) {
+        if (val !== def) {
           all[settings.contextMenus[key].key] = val;
           settings.set(all);
         }
@@ -28,11 +32,11 @@ chrome.contextMenus.create({
 
 const subl = document.getElementById('subl');
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.command == 'open') {
+chrome.runtime.onMessage.addListener((request) => {
+  if (request.command === 'open') {
     const filePath = request.filePath;
     settings.get(all => {
-      subl.src = `subl://${all.dirpath + filePath}`.replace(/\\/g,'/');
+      subl.src = `subl://${all.dirpath}${filePath}`.replace(/\\/g, '/');
     });
   }
 });
@@ -40,14 +44,14 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 chrome.tabs.onUpdated.addListener(showButton);
 
 chrome.pageAction.onClicked.addListener(tab => {
-  var domain = tab.url.match(/^[\w-]+:\/*\[?([\w\.:-]+)\]?(?::\d+)?/)[0];
+  const domain = tab.url.match(/^[\w-]+:\/*\[?([\w\.:-]+)\]?(?::\d+)?/)[0];
   if (domain) {
-    chrome.tabs.create({'url': `${domain}/itdc/debug`});
+    chrome.tabs.create({ url: `${domain}/itdc/debug` });
   }
 });
 
 function showButton(tabID, info, tab) {
-  chrome.tabs.sendRequest(tab.id, {method: 'markExists'}, response => {
+  chrome.tabs.sendRequest(tab.id, { method: 'markExists' }, response => {
     if (response && response.method === 'markExists') {
       if (response.data) {
         chrome.pageAction.show(tabID);

@@ -34,6 +34,10 @@ function refresh-token { # Get access token using refresh token
   export WEBSTORE_TOKEN=$(chrome-webstore-manager refresh_token --client_id "$webstoreClientId" --client_secret "$webstoreClientSecret")
 }
 
+function lint { # Run eslint
+  eslint .
+}
+
 function clear { # Clear artifacts
   rm extension.zip
 }

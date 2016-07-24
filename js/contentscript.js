@@ -1,3 +1,5 @@
+/* global chrome */
+
 const rootPath = document.querySelector('meta[name="itdcms:root_path"]');
 const removePath = (rootPath && rootPath.content);
 const files = document.querySelectorAll('open_file');
@@ -18,7 +20,7 @@ for (const file of files) {
         filePath,
       });
     }
-  })
+  });
 }
 
 chrome.extension.onRequest.addListener((request, sender, sendResponse) => {

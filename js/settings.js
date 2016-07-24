@@ -1,14 +1,17 @@
+/* global chrome */
+/* eslint no-underscore-dangle: 0 */
+
 const settings = {
   _default: {
     dirpath: '\\\\192.168.1.33\\local\\',
   },
   get(callback) {
-    chrome.storage.local.get('all', function(result) {
+    chrome.storage.local.get('all', data => {
       const all = Object.create(settings._default);
 
-      if (result.all) {
+      if (data.all) {
         for (const key in all) {
-          all[key] = result.all[key] || all[key];
+          all[key] = data.all[key] || all[key];
         }
       }
 
@@ -19,31 +22,10 @@ const settings = {
     chrome.storage.onChanged.addListener(() => settings.get(callback));
   },
   set(all) {
-    chrome.storage.local.set({all});
+    chrome.storage.local.set({ all });
   },
   contextMenus: [{
     key: 'dirpath',
     label: 'files directory',
   }],
 };
-
-function rootDomain(domain) {
-  const [right, left] = domain.split('.').reverse();
-  return `${left}.${right}`;
-}
-
-function urlDomain(url) {
-  var url = url.trim();
-
-  if (url.search(/^https?\:\/\//) > -1) {
-    url = url.match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i, '');
-  } else {
-    url = url.match(/^([^\/?#]+)(?:[\/?#]|$)/i, '');
-  }
-
-  return url[1];
-}
-
-function endsWith(str, suffix) {
-  return str.indexOf(suffix, str.length - suffix.length) > -1;
-}
