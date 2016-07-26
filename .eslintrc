@@ -2,7 +2,7 @@
   "extends": "airbnb",
   "rules": {
     "guard-for-in": 0,
-    "indent": ["error", 2],
+    "indent": ["error", 2, {"SwitchCase": 1}],
     "no-loop-func": 0,
     "no-param-reassign": ["error", { "props": false }],
     "no-restricted-syntax": ["error", "WithStatement"],
