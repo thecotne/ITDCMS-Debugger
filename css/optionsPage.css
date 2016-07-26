@@ -1,0 +1,13 @@
+.settings-row {
+  display: block;
+  margin: 0.65em 0;
+}
+
+.web-content-select-label {
+  min-width: 145px;
+}
+
+.web-content-select-label > span:only-of-type {
+  display: inline-block;
+  min-width: 100px;
+}

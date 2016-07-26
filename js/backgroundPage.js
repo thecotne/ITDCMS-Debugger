@@ -1,42 +1,14 @@
-/* global chrome, settings */
-/* eslint no-alert: 0 */
+/* global chrome, storage */
 /* eslint no-underscore-dangle: 0 */
-
-for (const key in settings.contextMenus) {
-  chrome.contextMenus.create({
-    title: `Change ${settings.contextMenus[key].label}`,
-    contexts: ['page'],
-    onclick() {
-      settings.get(all => {
-        const def = all[settings.contextMenus[key].key];
-        const val = prompt(`Change ${settings.contextMenus[key].label}`, def) || def;
-
-        if (val !== def) {
-          all[settings.contextMenus[key].key] = val;
-          settings.set(all);
-        }
-      });
-    },
-  });
-}
-
-chrome.contextMenus.create({
-  title: 'reset settings',
-  contexts: ['page'],
-  onclick() {
-    if (confirm('Are you sure you want to reset settings?')) {
-      settings.set(settings._default);
-    }
-  },
-});
 
 const subl = document.getElementById('subl');
 
 chrome.runtime.onMessage.addListener((request) => {
   if (request.command === 'open') {
     const filePath = request.filePath;
-    settings.get(all => {
-      subl.src = `subl://${all.dirpath}${filePath}`.replace(/\\/g, '/');
+
+    storage.localPath.then(localPath => {
+      subl.src = `subl://${localPath}${filePath}`.replace(/\\/g, '/');
     });
   }
 });

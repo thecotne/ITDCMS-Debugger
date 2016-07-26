@@ -3,7 +3,7 @@
   "name": "ITDCMS Debugger",
   "short_name": "ITDCMS_Debugger",
   "description": "ITDCMS Debugger is chrome extension for easy Debugging of ITDCMS",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "icons": {
     "128": "icons/icon128.png",
     "16": "icons/icon16.png",
@@ -14,6 +14,10 @@
     "default_title": "Open Debugger in new Tab"
   },
   "devtools_page": "html/devtoolsPage.html",
+  "options_ui": {
+    "page": "html/optionsPage.html",
+    "chrome_style": true
+  },
   "background": {
     "page": "html/backgroundPage.html"
   },
