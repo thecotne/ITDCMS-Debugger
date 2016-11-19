@@ -1,11 +1,3 @@
 {
-  "extends": ["standard"],
-  "env": {
-    "browser": true
-  },
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "script",
-    "globalReturn": false
-  }
+  "extends": ["standard"]
 }
