@@ -1,12 +1,11 @@
 {
-  "extends": "airbnb",
-  "rules": {
-    "guard-for-in": 0,
-    "indent": ["error", 2, {"SwitchCase": 1}],
-    "no-loop-func": 0,
-    "no-param-reassign": ["error", { "props": false }],
-    "no-restricted-syntax": ["error", "WithStatement"],
-    "no-use-before-define": ["error", { "functions": false, "classes": true }],
-    "no-else-return": 0
+  "extends": ["standard"],
+  "env": {
+    "browser": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "script",
+    "globalReturn": false
   }
 }

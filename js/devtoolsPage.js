@@ -5,36 +5,35 @@ chrome.devtools.panels.create(
   './icons/icon19.png',
   './html/devtoolsPanel.html',
   null // no callback needed
-);
+)
 
 chrome.devtools.panels.elements.onSelectionChanged.addListener(() => {
-  chrome.devtools.inspectedWindow.eval(`(${getElement.toString()})()`, (filePath) => {
+  chrome.devtools.inspectedWindow.eval(`(${getElement.toString()})()`, filePath => {
     if (filePath) {
       chrome.runtime.sendMessage({
         command: 'open',
-        filePath,
-      });
+        filePath
+      })
     }
-  });
-});
+  })
+})
 
-
-function getElement() {
+function getElement () {
   /* global $0 */
 
   if ($0.nodeType === document.COMMENT_NODE) {
-    const parts = $0.textContent.split(' ');
+    const parts = $0.textContent.split(' ')
     for (const key in parts) {
       if (/\/.+\.php$/i.test(parts[key])) {
-        const metaRemovePath = document.querySelector('meta[name="itdcms:root_path"]');
+        const metaRemovePath = document.querySelector('meta[name="itdcms:root_path"]')
         if (metaRemovePath && metaRemovePath.content) {
-          return parts[key].replace(metaRemovePath.content, '');
+          return parts[key].replace(metaRemovePath.content, '')
         } else {
-          return parts[key];
+          return parts[key]
         }
       }
     }
   }
 
-  return false;
+  return false
 }
