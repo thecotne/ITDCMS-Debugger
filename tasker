@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
-# Cotne Nazarashvili aka THECOTNE <cotne.95@gmail.com>
 
-if [ ! -f tasker-core/tasker-core ]; then
-  echo "load submodules"
-  git submodule update --init --recursive
+if [ ! -f ./node_modules/tasker/tasker-core ]; then
+    npm install thecotne/tasker
 fi
 
-source tasker-core/tasker-core
+source ./node_modules/tasker/tasker-core
+
 EXTENSIONID="nlnncapllcododheidankmkbidbefdkb"
 
 function createZip { # Create extension zip file
