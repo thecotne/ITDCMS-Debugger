@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-if [ ! -f ./node_modules/tasker/tasker-core ]; then
-    npm install thecotne/tasker
+if [ ! -f ./node_modules/@thecotne/tasker/tasker-core ]; then
+    npm install @thecotne/tasker
 fi
 
-source ./node_modules/tasker/tasker-core
+source ./node_modules/@thecotne/tasker/tasker-core
 
 EXTENSIONID="nlnncapllcododheidankmkbidbefdkb"
 
