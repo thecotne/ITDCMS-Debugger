@@ -7,7 +7,7 @@
     "@thecotne/tasker": "github:thecotne/tasker",
     "chrome-webstore-manager": "^0.4.1",
     "eslint": "^3.14.0",
-    "eslint-config-standard": "^7.0.0",
+    "eslint-config-standard": "^8.0.0",
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^2.0.1"
   }
