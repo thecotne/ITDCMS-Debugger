@@ -4,11 +4,19 @@
   },
   "private": true,
   "dependencies": {
-    "@thecotne/tasker": "github:thecotne/tasker",
+    "@thecotne/tasker": "^1.0.0",
     "chrome-webstore-manager": "^0.4.1",
+    "cz-conventional-changelog": "^2.0.0",
     "eslint": "^3.14.0",
-    "eslint-config-standard": "^7.0.0",
+    "eslint-config-standard": "^10.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-node": "^4.2.2",
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^2.0.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
