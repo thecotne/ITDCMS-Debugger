@@ -1,5 +1,7 @@
 # ITDCMS Debugger
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/thecotne/ITDCMS-Debugger.svg)](https://greenkeeper.io/)
+
 [![JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
 [![Build Status](https://img.shields.io/travis/thecotne/ITDCMS-Debugger/master.svg?style=flat-square&maxAge=300)](https://travis-ci.org/thecotne/ITDCMS-Debugger)
