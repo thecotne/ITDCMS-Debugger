@@ -1,7 +1,5 @@
 # ITDCMS Debugger
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/thecotne/ITDCMS-Debugger.svg)](https://greenkeeper.io/)
-
 [![JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
 [![Build Status](https://img.shields.io/travis/thecotne/ITDCMS-Debugger/master.svg?style=flat-square&maxAge=300)](https://travis-ci.org/thecotne/ITDCMS-Debugger)
@@ -10,6 +8,7 @@
 [![Chrome Web Store Downloads](https://img.shields.io/chrome-web-store/d/nlnncapllcododheidankmkbidbefdkb.svg?style=flat-square&maxAge=300)][1]
 [![Chrome Web Store Rating](https://img.shields.io/chrome-web-store/rating/nlnncapllcododheidankmkbidbefdkb.svg?style=flat-square&maxAge=300)][1]
 [![Chrome Web Store Rating Count](https://img.shields.io/chrome-web-store/rating-count/nlnncapllcododheidankmkbidbefdkb.svg?style=flat-square&maxAge=300)][1]
+[![Greenkeeper badge](https://badges.greenkeeper.io/thecotne/ITDCMS-Debugger.svg)](https://greenkeeper.io/)
 
 this is chrome extension for easy Debugging of ITDCMS
 
